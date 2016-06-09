@@ -1,0 +1,14 @@
+{
+  "name": "tutorial-knockout-1",
+  "version": "1.0.0",
+  "description": "http://learn.knockoutjs.com/#/?tutorial=intro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Justin Stahlman <jstahlman@mac.com> (http://www.stahlmandesign.com)",
+  "license": "ISC",
+  "dependencies": {
+    "knockout": "^3.4.0"
+  }
+}

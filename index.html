@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="http://livejs.com/live.js"></script>
+
+</head>
+
+<body>
+
+    <h2>Your seat reservations (<span data-bind="text: seats().length"></span>)</h2>
+    <!--put a limit on the number of seats you can reserve,
+    say, you can make the UI represent that by using the enable binding:-->
+    <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Passenger name</th>
+                <th>Meal</th>
+                <th>Surcharge</th>
+                <th></th>
+            </tr>
+        </thead>
+        <!-- Todo: Generate table body -->
+        <!-- foreach is part of a family of control flow bindings
+         that includes foreach, if, ifnot, and with. 
+         
+         Knockout tracks what has changed in your viewmodel,
+         and performs a minimal set of DOM updates to match.
+
+         the $root. prefix causes Knockout to look for a
+         handler on your top-level viewmodel
+         instead of on the instance being bound 
+
+         -->
+
+        <tbody data-bind="foreach: seats">
+            <tr>
+                <td><input data-bind="value: name" /></td>
+                <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
+                <td data-bind="text: formattedPrice"></td>
+                <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 data-bind="visible: totalSurcharge() > 0">
+        <!--visible: binding uses css display style to hide if 0-->
+        Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+    </h3>
+    <script type="text/javascript" src="node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+
+</body>
+
+</html>
